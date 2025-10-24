@@ -1,0 +1,7 @@
+{
+  "name": "portfolio-root",
+  "private": true,
+  "scripts": {
+    "build": "npm install --prefix frontend --no-save && npm run build --prefix frontend"
+  }
+}
