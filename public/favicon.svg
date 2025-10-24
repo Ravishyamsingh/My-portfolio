@@ -1,0 +1,20 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title>Ravi Portfolio Icon</title>
+  <desc>Stylised letter R monogram inside gradient shield</desc>
+  <defs>
+    <linearGradient id="grad-a" x1="15%" y1="10%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1F6FEB" />
+      <stop offset="55%" stop-color="#6E59FF" />
+      <stop offset="100%" stop-color="#A855F7" />
+    </linearGradient>
+    <linearGradient id="grad-b" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.92" />
+      <stop offset="50%" stop-color="#EEF2FF" stop-opacity="0.28" />
+      <stop offset="100%" stop-color="#C7D2FE" stop-opacity="0.18" />
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#grad-a)" />
+  <path d="M40 32h33.5c15.3 0 26.7 10.4 26.7 25.5 0 12.8-7.6 21.7-19.5 24.8l18 20.7h-18.4l-16.6-19.5H56.6V103H40V32Zm33 37.2c6.4 0 10.6-3.8 10.6-9.6 0-5.8-4.2-9.4-10.6-9.4H56.6v19h16.4Z" fill="#FFFFFF" opacity="0.94" />
+  <path d="M30.5 16.5h67c8 0 14.5 6.5 14.5 14.5v67c0 8-6.5 14.5-14.5 14.5h-67C22.5 112.5 16 106 16 98V31c0-8 6.5-14.5 14.5-14.5Z" fill="url(#grad-b)" />
+  <path d="M40 32h33.5c15.3 0 26.7 10.4 26.7 25.5 0 12.8-7.6 21.7-19.5 24.8l18 20.7h-18.4l-16.6-19.5H56.6V103H40V32Z" fill="#0B1120" fill-opacity="0.14" />
+</svg>

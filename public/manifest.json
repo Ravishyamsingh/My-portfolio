@@ -1,0 +1,16 @@
+{
+  "short_name": "Ravi",
+  "name": "Ravi Shyam Singh Portfolio",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#0b1120",
+  "background_color": "#0f172a"
+}
