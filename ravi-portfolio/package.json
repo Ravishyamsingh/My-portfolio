@@ -1,6 +1,9 @@
 {
   "name": "portfolio-root",
   "private": true,
+  "bin": {
+    "react-scripts": "./react-scripts.js"
+  },
   "scripts": {
     "postinstall": "cd frontend && npm install",
     "build": "cd frontend && npm run build",
