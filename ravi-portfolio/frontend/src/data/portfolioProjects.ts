@@ -5,6 +5,7 @@ export interface PortfolioProject {
   description: string;
   techStack: string[];
   highlights: string[];
+  githubUrl: string;
 }
 
 export const portfolioProjects: PortfolioProject[] = [
@@ -20,6 +21,7 @@ export const portfolioProjects: PortfolioProject[] = [
       'Built TensorFlow networks with dropout to capture non-linear churn indicators.',
       'Surfaced precision/recall insights via cross-validation dashboards for faculty stakeholders.',
     ],
+  githubUrl: 'https://github.com/Ravishyamsingh/Vulnerability-Detection',
   },
   {
     id: 'blood-bank-management',
@@ -44,6 +46,7 @@ export const portfolioProjects: PortfolioProject[] = [
       'Automated inventory alerts and emergency notifications via SMTP workflows.',
       'Streamlined stock tracking with Bootstrap-first forms and ORM audit trails.',
     ],
+  githubUrl: 'https://github.com/Ravishyamsingh/Online-blood-donation',
   },
   {
     id: 'virtual-lab',
@@ -57,6 +60,7 @@ export const portfolioProjects: PortfolioProject[] = [
       'Story-driven walkthroughs tailored for cryptography newcomers.',
       'Responsive Tailwind UI optimised for classroom and remote cohorts.',
     ],
+  githubUrl: 'https://github.com/Ravishyamsingh/virtual_lab',
   },
   {
     id: 'syncspace',
@@ -70,6 +74,7 @@ export const portfolioProjects: PortfolioProject[] = [
       'JWT-secured APIs with role-aware access controls and audit logs.',
       'Optimistic UI patterns keep collaborative boards responsive under load.',
     ],
+  githubUrl: 'https://github.com/Ravishyamsingh/syncspace',
   },
   {
     id: 'java-learning-platform',
@@ -94,5 +99,6 @@ export const portfolioProjects: PortfolioProject[] = [
       'Analytics dashboards visualise streaks and completion across cohorts.',
       'Gamified modules encourage progression with responsive UI patterns.',
     ],
+    githubUrl: 'https://github.com/Ravishyamsingh/JavaCourse',
   },
 ];

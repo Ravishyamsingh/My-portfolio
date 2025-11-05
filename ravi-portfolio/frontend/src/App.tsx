@@ -1,8 +1,9 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { memo, useEffect, useMemo, useRef, useState } from 'react';
 import { NavLink, Route, Routes, useNavigate, Navigate } from 'react-router-dom';
 import { portfolioProjects, PortfolioProject } from './data/portfolioProjects';
+import BrandMark from './components/BrandMark';
 
-const resumeLink = 'https://drive.google.com/drive/u/5/folders/1ORm-kJBELb_N09Fs5UZ8i9fHSkTvIS_j';
+const resumeLink = 'https://drive.google.com/file/d/1Ys60EWgZ9OdaktU6suX5l1A9zZG6ipWs/view?usp=drive_link';
 
 const navItems = [
   { label: 'Overview', path: '/' },
@@ -94,12 +95,14 @@ const profileImageSrc = '/assets/images/profile.jpg';
 const contactDetails = [
   { label: 'Email', value: 'rshyamsingh106@gmail.com', href: 'mailto:rshyamsingh106@gmail.com', icon: 'mail' },
   { label: 'LinkedIn', value: 'linkedin.com/in/ravi-shyam-singh-411740268', href: 'https://www.linkedin.com/in/ravi-shyam-singh-411740268/', icon: 'public' },
-  { label: 'GitHub', value: 'github.com/ravishyam', href: 'https://github.com/ravishyam', icon: 'terminal' },
+  { label: 'GitHub', value: 'github.com/ravishyam', href: 'https://github.com/Ravishyamsingh', icon: 'terminal' },
 ];
 
 const SectionWrapper: React.FC<React.PropsWithChildren<{ title: string; subtitle?: string }>> = ({ title, subtitle, children }) => (
-  <section className="section-padding">
-    <div className="container-custom">
+  <section className="section-padding relative isolate overflow-hidden bg-gradient-to-b from-primary-50/50 via-white/90 to-secondary-50/50">
+    <div className="pointer-events-none absolute -top-40 left-1/2 h-[22rem] w-[22rem] -translate-x-1/2 rounded-full bg-primary-200/45 blur-[140px]" aria-hidden="true" />
+    <div className="pointer-events-none absolute -bottom-48 right-[-10%] h-[24rem] w-[24rem] rounded-full bg-secondary-200/40 blur-[160px]" aria-hidden="true" />
+    <div className="container-custom relative z-10">
       <div className="max-w-3xl mb-10">
         <p className="text-sm uppercase tracking-[0.3em] text-primary-500 mb-3">{subtitle ?? 'Portfolio Snapshot'}</p>
         <h2 className="text-4xl font-bold text-secondary-900 dark:text-white">{title}</h2>
@@ -149,77 +152,87 @@ const HomeSection: React.FC = () => {
   }, [displayText, isDeleting, currentIndex, typingTexts]);
 
   return (
-    <section className="pt-20 pb-16 min-h-[calc(100vh-6rem)] bg-gradient-to-br from-white via-[#eef3ff] to-[#f4f9ff] dark:from-secondary-900 dark:via-secondary-900 dark:to-secondary-800">
-      <div className="container-custom">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-          <div className="space-y-5">
-            <span className="inline-flex items-center gap-2 bg-primary-50 text-primary-700 dark:bg-primary-900/40 dark:text-primary-200 px-5 py-2 rounded-full text-sm font-semibold tracking-wide">
-              <span className="material-symbols-rounded text-primary-500">workspace_premium</span>
-              Engineering Fresher · Software Engineering (CSE)
-            </span>
-            <div className="space-y-1" aria-live="polite">
-              <p className="text-3xl lg:text-2xl font-bold text-secondary-900 dark:text-white leading-tight tracking-tight">
-                {displayText}
-                <span className="inline-block ml-1 text-primary-500 animate-pulse">|</span>
+    <section className="relative isolate overflow-hidden py-0 bg-gradient-to-b from-white via-primary-50/70 to-secondary-50/60">
+      <div className="pointer-events-none absolute -top-48 left-1/2 h-[26rem] w-[26rem] -translate-x-1/2 rounded-full bg-primary-200/55 blur-[160px]" aria-hidden="true" />
+      <div className="pointer-events-none absolute -bottom-56 right-[-12%] h-[28rem] w-[28rem] rounded-full bg-secondary-200/50 blur-[170px]" aria-hidden="true" />
+      <div className="container-custom relative z-10">
+  <div className="hero-surface relative overflow-hidden rounded-[36px] border border-primary-100 dark:border-secondary-700 bg-gradient-to-tr from-white via-primary-50/90 to-secondary-100 dark:from-secondary-900 dark:via-secondary-900 dark:to-secondary-800 px-8 sm:px-12 lg:px-16 py-12 lg:py-16 shadow-[0_28px_64px_-30px_rgba(125,45,93,0.32)]">
+          <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-400 via-secondary-300 to-accent-300" aria-hidden="true" />
+          <div className="relative grid lg:grid-cols-[1.05fr_0.85fr] gap-12 lg:gap-16 items-start">
+            <div className="space-y-6">
+              <span className="inline-flex items-center gap-2 bg-primary-100 text-primary-700 dark:bg-primary-900/60 dark:text-primary-200 px-5 py-2 rounded-full text-sm font-semibold tracking-wide shadow-sm">
+                <span className="material-symbols-rounded text-primary-500">workspace_premium</span>
+                Engineering Fresher · Software Engineering (CSE)
+              </span>
+              <div className="space-y-1" aria-live="polite">
+                <p className="text-4xl md:text-5xl font-semibold text-secondary-900 dark:text-white leading-tight tracking-tight">
+                  {displayText}
+                  <span className="inline-block ml-1 text-primary-500 animate-pulse">|</span>
+                </p>
+              </div>
+              <p className="text-lg lg:text-xl text-secondary-700 dark:text-secondary-200 leading-relaxed">
+                I am a final-year B.Tech CSE student crafting thoughtful web platforms. My focus is on building reliable, real-time experiences that help teams learn, collaborate, and ship with confidence.
               </p>
-            </div>
-            <p className="text-xl text-secondary-600 dark:text-secondary-300 leading-relaxed">
-              I am a final-year B.Tech CSE student crafting thoughtful web platforms. My focus is on building reliable, real-time experiences that help teams learn, collaborate, and ship with confidence.
-            </p>
-            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4">
-              <button className="btn-primary" onClick={() => navigate('/projects')}>
-                <span className="material-symbols-rounded text-white/90">rocket_launch</span>
-                Explore Projects
-              </button>
-              <button className="btn-secondary" onClick={() => navigate('/contact')}>
-                <span className="material-symbols-rounded text-primary-500">chat</span>
-                Connect With Me
-              </button>
-              <a
-                href={resumeLink}
-                className="btn-secondary bg-white text-primary-600 border border-primary-200 hover:bg-primary-50 hover:text-primary-700 dark:bg-secondary-900 dark:text-primary-300 dark:border-primary-500"
-                target="_blank"
-                rel="noreferrer"
-                download
-                title="Download Ravi Shyam Singh CV"
-              >
-                <span className="material-symbols-rounded text-primary-500">download</span>
-                Download CV
-              </a>
-            </div>
-            <div className="grid sm:grid-cols-3 gap-5 pt-8 border-t border-secondary-200 dark:border-secondary-700">
-              {quickStats.map((stat) => (
-                <button
-                  key={stat.label}
-                  onClick={() => navigate(stat.target)}
-                  className="card p-5 text-left transition-transform hover:-translate-y-1"
-                >
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="material-symbols-rounded text-primary-500 text-3xl">{stat.icon}</span>
-                    <p className="text-xs uppercase tracking-[0.25em] text-secondary-500 dark:text-secondary-400">{stat.label}</p>
-                  </div>
-                  <p className="text-lg font-semibold text-secondary-900 dark:text-white">{stat.value}</p>
-                  <p className="mt-2 text-sm text-secondary-500 dark:text-secondary-400">{stat.description}</p>
+              <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4">
+                <button className="btn-primary" onClick={() => navigate('/projects')}>
+                  <span className="material-symbols-rounded text-white/90">rocket_launch</span>
+                  Explore Projects
                 </button>
-              ))}
+                <button className="btn-secondary" onClick={() => navigate('/contact')}>
+                  <span className="material-symbols-rounded text-primary-500">chat</span>
+                  Connect With Me
+                </button>
+                <a
+                  href={resumeLink}
+                  className="btn-secondary bg-white text-primary-600 border border-primary-200 hover:bg-primary-50 hover:text-primary-700 dark:bg-secondary-900 dark:text-primary-300 dark:border-primary-500"
+                  target="_blank"
+                  rel="noreferrer"
+                  download
+                  title="Download Ravi Shyam Singh CV"
+                >
+                  <span className="material-symbols-rounded text-primary-500">download</span>
+                  Download CV
+                </a>
+              </div>
+              <div className="grid sm:grid-cols-3 gap-5 pt-8 border-t border-primary-100 dark:border-secondary-700">
+                {quickStats.map((stat) => (
+                  <button
+                    key={stat.label}
+                    onClick={() => navigate(stat.target)}
+                    className="card p-5 text-left transition-transform hover:-translate-y-1 focus:outline-none focus-visible:ring focus-visible:ring-primary-400"
+                  >
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className="material-symbols-rounded text-primary-500 text-3xl">{stat.icon}</span>
+                      <p className="text-xs uppercase tracking-[0.25em] text-secondary-500 dark:text-secondary-300">{stat.label}</p>
+                    </div>
+                    <p className="text-lg font-semibold text-secondary-900 dark:text-white">{stat.value}</p>
+                    <p className="mt-2 text-sm text-secondary-700 dark:text-secondary-300">{stat.description}</p>
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
-          <div className="relative self-start">
-            <div className="relative w-full max-w-[22rem] mx-auto aspect-square">
-              <div className="absolute inset-0 rounded-[34px] bg-gradient-to-br from-primary-200/35 via-white/40 to-secondary-200/30 dark:from-primary-700/35 dark:via-secondary-800/40 dark:to-secondary-700/30 blur-2xl" aria-hidden="true" />
-              <div className="relative h-full rounded-[30px] bg-white dark:bg-secondary-900 ring-1 ring-primary-100/60 dark:ring-secondary-700 shadow-[0_24px_50px_-28px_rgba(79,70,229,0.45)] overflow-hidden">
-                <img
-                  src={profileImageSrc}
-                  alt="Portrait of Ravi Shyam Singh"
-                  className="w-full h-full object-cover object-top"
-                  loading="lazy"
-                />
-                <div className="absolute inset-x-5 bottom-5 bg-white/85 dark:bg-secondary-900/85 backdrop-blur rounded-2xl px-4 py-3 flex items-center justify-between shadow-[0_12px_30px_-18px_rgba(79,70,229,0.45)]">
-                  <div>
-                    <p className="text-sm font-semibold text-secondary-900 dark:text-white">Ravi Shyam Singh</p>
-                    <p className="text-xs text-secondary-500 dark:text-secondary-300 uppercase tracking-[0.28em]">Full Stack Developer</p>
+            <div className="relative self-start">
+              <div className="relative w-full max-w-[22rem] mx-auto aspect-square">
+                <div className="absolute inset-0 rounded-[34px] bg-gradient-to-br from-primary-100/70 via-white to-secondary-100/60 dark:from-secondary-800 dark:via-secondary-900 dark:to-secondary-800" aria-hidden="true" />
+                <div className="relative h-full rounded-[30px] bg-white dark:bg-secondary-900 ring-1 ring-primary-100 dark:ring-secondary-700 shadow-[0_30px_60px_-28px_rgba(125,45,93,0.4)] overflow-hidden">
+                  <picture>
+                    <source srcSet={profileImageSrc} type="image/jpeg" />
+                    <img
+                      src={profileImageSrc}
+                      alt="Portrait of Ravi Shyam Singh"
+                      className="w-full h-full object-cover object-top"
+                      loading="lazy"
+                      decoding="async"
+                      fetchPriority="high"
+                    />
+                  </picture>
+                  <div className="absolute inset-x-5 bottom-5 bg-white dark:bg-secondary-900/95 border border-primary-100 dark:border-secondary-700 rounded-2xl px-4 py-3 flex items-center justify-between shadow-[0_20px_34px_-24px_rgba(125,45,93,0.38)]">
+                    <div>
+                      <p className="text-sm font-semibold text-secondary-900 dark:text-white">Ravi Shyam Singh</p>
+                      <p className="text-xs text-secondary-500 dark:text-secondary-300 uppercase tracking-[0.28em]">Full Stack Developer</p>
+                    </div>
+                    <span className="material-symbols-rounded text-primary-500 text-2xl">verified</span>
                   </div>
-                  <span className="material-symbols-rounded text-primary-500 text-2xl">verified</span>
                 </div>
               </div>
             </div>
@@ -236,7 +249,7 @@ const AboutSection: React.FC = () => (
       <div className="space-y-6">
         <div className="card p-6">
           <h3 className="text-xl font-semibold text-secondary-900 dark:text-white mb-3">🎓 Academic Journey</h3>
-          <p className="text-secondary-600 dark:text-secondary-300 leading-relaxed">
+          <p className="text-secondary-700 dark:text-secondary-300 leading-relaxed">
             Final-year B.Tech Computer Science & Engineering student with a passion for software craftsmanship. I approach every build with a learning mindset and an eye for production readiness.
           </p>
         </div>
@@ -252,13 +265,13 @@ const AboutSection: React.FC = () => (
       <div className="space-y-6">
         <div className="card p-6">
           <h3 className="text-xl font-semibold text-secondary-900 dark:text-white mb-3">📌 What Drives Me</h3>
-          <p className="text-secondary-600 dark:text-secondary-300 leading-relaxed">
+          <p className="text-secondary-700 dark:text-secondary-300 leading-relaxed">
             I enjoy transforming complex requirements into intuitive experiences. My projects focus on helping users understand difficult topics (like cryptography) or collaborate seamlessly (like Syncspace).
           </p>
         </div>
         <div className="card p-6">
           <h3 className="text-xl font-semibold text-secondary-900 dark:text-white mb-3">🌍 Based In</h3>
-          <p className="text-secondary-600 dark:text-secondary-300">
+          <p className="text-secondary-700 dark:text-secondary-300">
             Tamil Nadu, Madurai · Available for remote Software Engineer / Full-Stack Developer roles and internships.
           </p>
         </div>
@@ -304,35 +317,35 @@ const useReveal = () => {
   return { elementRef, isVisible };
 };
 
-const ProjectCard: React.FC<{ project: PortfolioProject; index: number }> = ({ project, index }) => {
+const ProjectCard = memo(function ProjectCard({ project, index }: { project: PortfolioProject; index: number }) {
   const { elementRef, isVisible } = useReveal();
 
   return (
     <article
       ref={elementRef}
-      className={`relative overflow-hidden rounded-3xl border border-primary-100/70 dark:border-secondary-700 bg-gradient-to-br from-white via-primary-50/40 to-primary-100/30 dark:from-secondary-900/80 dark:via-secondary-900/70 dark:to-secondary-800/60 shadow-xl backdrop-blur transition-all duration-700 ease-out transform ${
+      className={`relative overflow-hidden rounded-3xl border border-primary-100 dark:border-secondary-700 bg-white dark:bg-secondary-900 shadow-[0_24px_54px_-26px_rgba(125,45,93,0.36)] transition-all duration-700 ease-out transform ${
         isVisible ? 'opacity-100 translate-y-0 rotate-0' : 'opacity-0 translate-y-8 rotate-[2deg]'
-      } hover:-translate-y-3 hover:shadow-2xl hover:scale-[1.01]`}
+      } hover:-translate-y-3 hover:shadow-[0_32px_64px_-28px_rgba(125,45,93,0.42)] hover:scale-[1.01]`}
       style={{ transitionDelay: `${index * 80}ms` }}
     >
-      <span className="pointer-events-none absolute inset-x-6 top-0 h-1 rounded-full bg-gradient-to-r from-primary-400 via-secondary-400 to-primary-500 opacity-80" />
+      <span className="pointer-events-none absolute inset-x-6 top-0 h-1 rounded-full bg-gradient-to-r from-primary-400 via-secondary-300 to-accent-300" />
       <div className="flex flex-col gap-6 h-full p-6 lg:p-8">
         <div className="space-y-3">
-          <p className="text-sm uppercase tracking-[0.25em] text-primary-500">{project.subtitle}</p>
+          <p className="text-sm uppercase tracking-[0.25em] text-primary-600">{project.subtitle}</p>
           <h3 className="text-2xl font-semibold text-secondary-900 dark:text-white">{project.title}</h3>
-          <p className="text-secondary-600 dark:text-secondary-300 leading-relaxed">{project.description}</p>
+          <p className="text-secondary-700 dark:text-secondary-200 leading-relaxed">{project.description}</p>
         </div>
         <div className="flex flex-wrap gap-2 pt-1">
           {project.techStack.map((tech) => (
             <span
               key={tech}
-              className="px-3 py-1 rounded-full bg-white/70 text-primary-700 shadow-sm border border-primary-100/60 text-xs font-medium dark:bg-secondary-900/80 dark:text-primary-200 dark:border-secondary-600"
+              className="px-3 py-1 rounded-full bg-primary-50 text-primary-700 shadow-sm border border-primary-100 text-xs font-medium dark:bg-secondary-800 dark:text-primary-200 dark:border-secondary-600"
             >
               {tech}
             </span>
           ))}
         </div>
-        <ul className="space-y-3 text-sm lg:text-base text-secondary-600 dark:text-secondary-300">
+        <ul className="space-y-3 text-sm lg:text-base text-secondary-700 dark:text-secondary-200">
           {project.highlights.slice(0, 3).map((highlight) => (
             <li key={highlight} className="flex items-start gap-2">
               <span className="material-symbols-rounded text-primary-500 mt-0.5 text-lg">check_circle</span>
@@ -340,12 +353,24 @@ const ProjectCard: React.FC<{ project: PortfolioProject; index: number }> = ({ p
             </li>
           ))}
         </ul>
+        <div className="mt-auto pt-4">
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-500 font-semibold text-sm"
+          >
+            <span className="material-symbols-rounded text-base">code</span>
+            View Code
+          </a>
+        </div>
       </div>
     </article>
   );
-};
+});
+ProjectCard.displayName = 'ProjectCard';
 
-const SkillCard: React.FC<{ category: SkillShowcase; index: number }> = ({ category, index }) => {
+const SkillCard = memo(function SkillCard({ category, index }: { category: SkillShowcase; index: number }) {
   const { elementRef, isVisible } = useReveal();
 
   return (
@@ -360,8 +385,8 @@ const SkillCard: React.FC<{ category: SkillShowcase; index: number }> = ({ categ
         <h3 className="text-xl font-semibold text-secondary-900 dark:text-white">{category.title}</h3>
         <span className="material-symbols-rounded text-primary-500" aria-hidden="true">{category.icon}</span>
       </div>
-      <p className="text-sm text-secondary-500 dark:text-secondary-400 mb-4">{category.blurb}</p>
-      <ul className="space-y-2 text-secondary-600 dark:text-secondary-300">
+  <p className="text-sm text-secondary-700 dark:text-secondary-200 mb-4">{category.blurb}</p>
+  <ul className="space-y-2 text-secondary-700 dark:text-secondary-200">
         {category.items.map((item) => (
           <li key={item} className="flex items-start gap-2">
             <span className="material-symbols-rounded text-primary-500 mt-0.5">check_circle</span>
@@ -371,7 +396,8 @@ const SkillCard: React.FC<{ category: SkillShowcase; index: number }> = ({ categ
       </ul>
     </article>
   );
-};
+});
+SkillCard.displayName = 'SkillCard';
 
 const SkillsSection: React.FC = () => (
   <SectionWrapper title="Skills & Tools" subtitle="Skills">
@@ -410,8 +436,8 @@ const ExperienceSection: React.FC = () => {
             <span className="material-symbols-rounded text-primary-500">timeline</span>
             {experienceNarrative.headline}
           </h3>
-          <p className="text-secondary-600 dark:text-secondary-300 leading-relaxed">{experienceNarrative.intro}</p>
-          <ul className="space-y-3 text-secondary-600 dark:text-secondary-300">
+          <p className="text-secondary-700 dark:text-secondary-300 leading-relaxed">{experienceNarrative.intro}</p>
+          <ul className="space-y-3 text-secondary-700 dark:text-secondary-300">
             {experienceNarrative.bullets.map((item) => (
               <li key={item} className="flex items-start gap-2">
                 <span className="material-symbols-rounded text-primary-500 mt-0.5">grade</span>
@@ -419,17 +445,17 @@ const ExperienceSection: React.FC = () => {
               </li>
             ))}
           </ul>
-          <p className="text-secondary-600 dark:text-secondary-300 leading-relaxed">{experienceNarrative.closer}</p>
+          <p className="text-secondary-700 dark:text-secondary-300 leading-relaxed">{experienceNarrative.closer}</p>
         </article>
         <article
           ref={focusCard.elementRef}
-          className={`card p-6 lg:p-8 space-y-4 bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-secondary-900 dark:via-secondary-800 dark:to-secondary-900 border-none shadow-xl transition-all duration-600 ease-out ${
+          className={`card p-6 lg:p-8 space-y-4 bg-gradient-to-br from-primary-100/60 via-white to-secondary-100/60 dark:from-secondary-900 dark:via-secondary-800 dark:to-secondary-900 border-none shadow-xl transition-all duration-600 ease-out ${
             focusCard.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
           style={{ transitionDelay: '120ms' }}
         >
           <h4 className="text-lg font-semibold text-secondary-900 dark:text-white">Focus Areas</h4>
-          <div className="space-y-3 text-secondary-600 dark:text-secondary-300">
+          <div className="space-y-3 text-secondary-700 dark:text-secondary-300">
             <p className="flex items-start gap-2">
               <span className="material-symbols-rounded text-primary-500">hub</span>
               Product-ready realtime workflows
@@ -452,7 +478,7 @@ const ExperienceSection: React.FC = () => {
 const ContactSection: React.FC = () => (
   <SectionWrapper title="Let’s Connect" subtitle="Contact">
     <div className="card p-6 lg:p-8">
-      <p className="text-secondary-600 dark:text-secondary-300 mb-6">
+  <p className="text-secondary-700 dark:text-secondary-300 mb-6">
         I’m actively seeking internship and entry-level opportunities where I can contribute as a software engineer. If you’d like to collaborate or just say hi, feel free to reach out through any of the channels below.
       </p>
       <div className="grid sm:grid-cols-3 gap-4">
@@ -464,7 +490,7 @@ const ContactSection: React.FC = () => (
             target={detail.href.startsWith('http') ? '_blank' : undefined}
             rel={detail.href.startsWith('http') ? 'noreferrer' : undefined}
           >
-            <div className="flex items-center gap-2 text-secondary-500 dark:text-secondary-400 text-sm">
+            <div className="flex items-center gap-2 text-secondary-600 dark:text-secondary-400 text-sm">
               <span className="material-symbols-rounded text-primary-500">{detail.icon}</span>
               <span>{detail.label}</span>
             </div>
@@ -477,32 +503,37 @@ const ContactSection: React.FC = () => (
 );
 
 const Footer: React.FC = () => (
-  <footer className="bg-secondary-900 dark:bg-black text-white py-12">
-    <div className="container-custom text-center space-y-4">
-      <p className="text-xl font-semibold">Ravi Shyam Singh</p>
-      <p className="text-secondary-400 text-sm">Building dependable web experiences with empathy and curiosity.</p>
-      <div className="flex justify-center gap-5 text-sm">
+  <footer className="bg-gradient-to-r from-primary-50 via-white to-secondary-50 dark:bg-secondary-900 text-secondary-700 dark:text-secondary-200 py-12">
+      <div className="container-custom text-center space-y-4">
+        <p className="text-xl font-semibold text-secondary-900 dark:text-white">Ravi Shyam Singh</p>
+  <p className="text-secondary-600 dark:text-secondary-300 text-sm">Building dependable web experiences with empathy and curiosity.</p>
+        <div className="flex justify-center gap-5 text-sm">
         {contactDetails.map((detail) => (
-          <a key={detail.label} href={detail.href} className="text-secondary-400 hover:text-white transition-colors inline-flex items-center gap-1" target={detail.href.startsWith('http') ? '_blank' : undefined} rel={detail.href.startsWith('http') ? 'noreferrer' : undefined}>
-            <span className="material-symbols-rounded text-primary-400 text-base">{detail.icon}</span>
+            <a key={detail.label} href={detail.href} className="text-secondary-600 hover:text-primary-500 dark:text-secondary-300 dark:hover:text-primary-200 transition-colors inline-flex items-center gap-1" target={detail.href.startsWith('http') ? '_blank' : undefined} rel={detail.href.startsWith('http') ? 'noreferrer' : undefined}>
+              <span className="material-symbols-rounded text-primary-500 text-base">{detail.icon}</span>
             {detail.label}
           </a>
         ))}
       </div>
-      <p className="text-xs text-secondary-500">© {new Date().getFullYear()} Ravi Shyam Singh. Crafted with React & Tailwind CSS.</p>
+  <p className="text-xs text-secondary-600 dark:text-secondary-400">© {new Date().getFullYear()} Ravi Shyam Singh. Crafted with TypeScript, Vite & Tailwind CSS.</p>
     </div>
   </footer>
 );
 
 const App: React.FC = () => {
   return (
-    <div className="min-h-screen bg-white dark:bg-secondary-900 transition-colors duration-300">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-secondary-900/90 backdrop-blur-lg border-b border-secondary-200 dark:border-secondary-700">
+    <div className="page-shell min-h-screen text-secondary-900 dark:text-white transition-colors duration-300">
+  <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-secondary-900/70 backdrop-blur-xl border-b border-primary-100/70 dark:border-secondary-800 shadow-[0_12px_32px_-20px_rgba(125,45,93,0.35)] dark:shadow-none">
         <div className="container-custom flex items-center justify-between py-4">
-          <NavLink to="/" className="text-2xl font-bold text-gradient">
-            Ravi Shyam Singh
+          <NavLink to="/" className="group inline-flex items-center gap-3">
+            <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white/85 dark:bg-secondary-900/80 shadow-[0_12px_30px_-20px_rgba(109,52,87,0.45)] ring-1 ring-white/60 dark:ring-secondary-700">
+              <BrandMark className="h-7 w-7" aria-hidden="true" />
+            </span>
+            <span className="text-xl lg:text-2xl font-semibold text-gradient group-hover:opacity-90 transition-opacity">
+              Ravi Shyam Singh
+            </span>
           </NavLink>
-          <nav className="hidden lg:flex items-center gap-6">
+          <nav className="hidden lg:flex items-center gap-6" aria-label="Primary">
             {navItems.map((item) => (
               <NavLink
                 key={item.path}
